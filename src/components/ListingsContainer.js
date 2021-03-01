@@ -1,11 +1,26 @@
 import React from "react";
-// import ListingCard from "./ListingCard";
+import ListingCard from "./ListingCard";
 
-function ListingsContainer() {
+function ListingsContainer({listings, setListings, handleTrashClick}) {
+  
+
+  function handleTrashClick(removedListing){
+    const updatedListings = listings.filter(listing => listing.id !== removedListing.id)
+    setListings(updatedListings)
+  }
+  const listingArray = listings.map((listing)=> {
+    return (
+      <ListingCard 
+     key={listing.id}
+     listing={listing}
+     handleTrashClick={handleTrashClick}
+     />
+   )
+  })
   return (
     <main>
       <ul className="cards">
-        {/* use the ListingCard component to display listings */}
+        {listingArray}
       </ul>
     </main>
   );

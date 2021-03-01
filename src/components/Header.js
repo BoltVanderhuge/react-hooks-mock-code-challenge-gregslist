@@ -1,7 +1,8 @@
 import React from "react";
 import Search from "./Search";
+import NewListing from "./NewListing";
 
-function Header() {
+function Header({onSearch, handleSubmit, handleClick, aListing}) {
   return (
     <header>
       <h1>
@@ -10,7 +11,9 @@ function Header() {
         </span>
         gregslist
       </h1>
-      <Search />
+      <Search onSearch={onSearch} handleSubmit={handleSubmit} />
+      <button onClick={handleClick} type="button">Sort Alphbetically by Location</button>
+      <NewListing aListing={aListing}/>
     </header>
   );
 }
